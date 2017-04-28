@@ -1,4 +1,4 @@
-class ABTesting(val experiments: List<Experiment>) {
+class ABTesting(val experiments: List<Experiment>, val randomGenerator: RandomGenerator = RandomGenerator()) {
 
     fun getExperiment(name: String): Experiment {
         val found: Experiment? = experiments.find { it.name == name }
@@ -6,7 +6,12 @@ class ABTesting(val experiments: List<Experiment>) {
     }
 
     fun getCurrentOptionFor(experimentName: String): String {
-        TODO()
+        val randomValue = randomGenerator.getRandom()
+        if (randomValue < 0.5) {
+            return getExperiment(experimentName).options[0]
+        } else {
+            return getExperiment(experimentName).options[1]
+        }
     }
 
 }

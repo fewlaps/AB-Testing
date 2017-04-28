@@ -1,3 +1,1 @@
-class ExperimentNotFoundException : RuntimeException() {
-
-}
+class ExperimentNotFoundException : RuntimeException()
