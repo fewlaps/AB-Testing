@@ -1,13 +1,21 @@
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
+import org.junit.Before
 import org.junit.Test
+
+val YES_OR_NO_EXPERIMENT = Experiment("yes or no", listOf(Option("yes"), Option("no")))
 
 class ABTestingShould {
 
+    lateinit var abTesting: ABTesting
+
+    @Before
+    fun setUp() {
+        abTesting = ABTesting(listOf(YES_OR_NO_EXPERIMENT))
+    }
+
     @Test
     internal fun returnListOfExperiments() {
-        val experiment = Experiment("yes or no", listOf(Option("yes"), Option("no")))
-        val abTesting = ABTesting(listOf(experiment))
-
         val experiments: List<Experiment> = abTesting.experiments
 
         assertEquals("yes or no", experiments[0].name)
@@ -15,9 +23,6 @@ class ABTestingShould {
 
     @Test
     fun returnDetailOfExperiment() {
-        val experiment = Experiment("yes or no", listOf(Option("yes"), Option("no")))
-        val abTesting = ABTesting(listOf(experiment))
-
         val storedExperiment = abTesting.getExperiment("yes or no")
 
         assertEquals("yes or no", storedExperiment.name)
@@ -25,12 +30,15 @@ class ABTestingShould {
         assertEquals("no", storedExperiment.options[1].name)
     }
 
-
     @Test(expected = ExperimentNotFoundException::class)
     fun failWhenExperimentDoesntExists() {
-        val experiment = Experiment("yes or no", listOf(Option("yes"), Option("no")))
-        val abTesting = ABTesting(listOf(experiment))
-
         abTesting.getExperiment("a or b")
+    }
+
+    @Test
+    fun returnAnOptionForAnExperiment() {
+        val result = abTesting.getCurrentOptionFor("yes or no")
+
+        assertTrue(result == "yes" || result == "no")
     }
 }

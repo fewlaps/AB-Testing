@@ -5,5 +5,8 @@ class ABTesting(val experiments: List<Experiment>) {
         return found ?: throw ExperimentNotFoundException()
     }
 
+    fun getCurrentOptionFor(experimentName: String): String {
+        TODO()
+    }
 
 }
