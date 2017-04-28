@@ -40,13 +40,6 @@ class ABTestingShould {
     }
 
     @Test
-    fun returnAnOptionForAnExperiment() {
-        val result = abTesting.getCurrentOptionFor("yes or no")
-
-        assertTrue(result == "yes" || result == "no")
-    }
-
-    @Test
     fun returnFirstOption_whenRandomIsLessThanHalf() {
         given(randomGenerator.getRandom()).willReturn(0.25)
 
