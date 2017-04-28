@@ -6,12 +6,8 @@ class ABTesting(val experiments: List<Experiment>, val randomGenerator: RandomGe
     }
 
     fun getCurrentOptionFor(experimentName: String): String {
-        val randomValue = randomGenerator.getRandom()
-        if (randomValue < 0.5) {
-            return getExperiment(experimentName).options[0]
-        } else {
-            return getExperiment(experimentName).options[1]
-        }
+        val randomValue = randomGenerator.getRandom(experiments.size)
+        return getExperiment(experimentName).options[randomValue]
     }
 
 }
