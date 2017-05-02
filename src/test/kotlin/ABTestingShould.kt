@@ -1,5 +1,5 @@
+import doubles.ABTestingRepositoryFake
 import org.junit.Assert.assertEquals
-import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyInt
@@ -16,7 +16,7 @@ class ABTestingShould {
     @Before
     fun setUp() {
         randomGenerator = mock(RandomGenerator::class.java)
-        abTesting = ABTesting(listOf(YES_OR_NO_EXPERIMENT), randomGenerator)
+        abTesting = ABTesting(listOf(YES_OR_NO_EXPERIMENT), ABTestingRepositoryFake(), randomGenerator)
     }
 
     @Test
@@ -44,11 +44,26 @@ class ABTestingShould {
     fun manageMultipleOptionsWithSameChance() {
         val experimentName = "three options experiment"
         val experiment = Experiment(experimentName, listOf("a", "b", "c"))
-        abTesting = ABTesting(listOf(experiment), randomGenerator)
 
+        abTesting = ABTesting(listOf(experiment), ABTestingRepositoryFake(), randomGenerator)
         assertRandomValueGivesOption(experimentName, 0, "a")
+
+        abTesting = ABTesting(listOf(experiment), ABTestingRepositoryFake(), randomGenerator)
         assertRandomValueGivesOption(experimentName, 1, "b")
+
+        abTesting = ABTesting(listOf(experiment), ABTestingRepositoryFake(), randomGenerator)
         assertRandomValueGivesOption(experimentName, 2, "c")
+    }
+
+    @Test
+    fun returnedOptionShouldBeAlwaysTheSame() {
+        given(randomGenerator.getRandom(anyInt())).willReturn(0)
+        val currentOption = abTesting.getCurrentOptionFor("yes or no")
+        given(randomGenerator.getRandom(anyInt())).willReturn(1)
+
+        val newOption = abTesting.getCurrentOptionFor("yes or no")
+
+        assertEquals(currentOption, newOption)
     }
 
     private fun assertRandomValueGivesOption(experimentName: String, random: Int, expectedOption: String) {
