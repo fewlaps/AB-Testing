@@ -1,3 +1,4 @@
+import doubles.ABTestingRepositoryEmpty
 import doubles.ABTestingRepositoryFake
 import org.junit.Assert.assertEquals
 import org.junit.Before
@@ -48,7 +49,7 @@ class ABTestingShould {
         val experimentName = "three options experiment"
         val experiment = Experiment(experimentName, listOf("a", "b", "c"))
 
-        abTesting = ABTesting(listOf(experiment), ABTestingRepositoryFake(), randomGenerator)
+        abTesting = ABTesting(listOf(experiment), ABTestingRepositoryEmpty(), randomGenerator)
         assertRandomValueGivesOption(experimentName, 0, "a")
         assertRandomValueGivesOption(experimentName, 1, "b")
         assertRandomValueGivesOption(experimentName, 2, "c")
