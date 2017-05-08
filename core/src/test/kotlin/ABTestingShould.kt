@@ -24,6 +24,11 @@ class ABTestingShould {
     }
 
     @Test
+    fun fail(){
+        assertTrue(false)
+    }
+
+    @Test
     internal fun returnListOfExperiments() {
         val experiments: List<Experiment> = abTesting.experiments
 
