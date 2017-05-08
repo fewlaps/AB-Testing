@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Fewlaps/ABTesting.svg?branch=master)](https://travis-ci.org/Fewlaps/ABTesting)
+
 # ABTesting
 The simpler ABTesting library
 
