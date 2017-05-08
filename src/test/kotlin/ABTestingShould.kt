@@ -6,7 +6,10 @@ import org.mockito.ArgumentMatchers.anyInt
 import org.mockito.BDDMockito.given
 import org.mockito.Mockito.mock
 
-val YES_OR_NO_EXPERIMENT = Experiment("yes or no", listOf("yes", "no"))
+val EXPERIMENT_NAME = "yes or no"
+val OPTION_YES = "yes"
+val OPTION_NO = "no"
+val YES_OR_NO_EXPERIMENT = Experiment(EXPERIMENT_NAME, listOf(OPTION_YES, OPTION_NO))
 
 class ABTestingShould {
 
@@ -23,21 +26,21 @@ class ABTestingShould {
     internal fun returnListOfExperiments() {
         val experiments: List<Experiment> = abTesting.experiments
 
-        assertEquals("yes or no", experiments[0].name)
+        assertEquals(EXPERIMENT_NAME, experiments[0].name)
     }
 
     @Test
     fun returnDetailOfExperiment() {
-        val storedExperiment = abTesting.getExperiment("yes or no")
+        val storedExperiment = abTesting.getExperiment(EXPERIMENT_NAME)
 
-        assertEquals("yes or no", storedExperiment.name)
-        assertEquals("yes", storedExperiment.options[0])
-        assertEquals("no", storedExperiment.options[1])
+        assertEquals(EXPERIMENT_NAME, storedExperiment.name)
+        assertEquals(OPTION_YES, storedExperiment.options[0])
+        assertEquals(OPTION_NO, storedExperiment.options[1])
     }
 
     @Test(expected = ExperimentNotFoundException::class)
     fun failWhenExperimentDoesntExists() {
-        abTesting.getExperiment("a or b")
+        abTesting.getExperiment("unexisting test")
     }
 
     @Test
@@ -47,21 +50,17 @@ class ABTestingShould {
 
         abTesting = ABTesting(listOf(experiment), ABTestingRepositoryFake(), randomGenerator)
         assertRandomValueGivesOption(experimentName, 0, "a")
-
-        abTesting = ABTesting(listOf(experiment), ABTestingRepositoryFake(), randomGenerator)
         assertRandomValueGivesOption(experimentName, 1, "b")
-
-        abTesting = ABTesting(listOf(experiment), ABTestingRepositoryFake(), randomGenerator)
         assertRandomValueGivesOption(experimentName, 2, "c")
     }
 
     @Test
     fun returnedOptionShouldBeAlwaysTheSame() {
-        given(randomGenerator.getRandom(anyInt())).willReturn(0)
-        val currentOption = abTesting.getCurrentOptionFor("yes or no")
-        given(randomGenerator.getRandom(anyInt())).willReturn(1)
+        mockRandomToReturn(0)
+        val currentOption = abTesting.getCurrentOptionFor(EXPERIMENT_NAME)
+        mockRandomToReturn(1)
 
-        val newOption = abTesting.getCurrentOptionFor("yes or no")
+        val newOption = abTesting.getCurrentOptionFor(EXPERIMENT_NAME)
 
         assertEquals(currentOption, newOption)
     }
@@ -70,5 +69,9 @@ class ABTestingShould {
         given(randomGenerator.getRandom(anyInt())).willReturn(random)
         val resultOption = abTesting.getCurrentOptionFor(experimentName)
         assertEquals(expectedOption, resultOption)
+    }
+
+    private fun mockRandomToReturn(value: Int) {
+        given(randomGenerator.getRandom(anyInt())).willReturn(value)
     }
 }
