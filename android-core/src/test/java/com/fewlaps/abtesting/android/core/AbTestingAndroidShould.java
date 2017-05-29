@@ -26,7 +26,7 @@ public class AbTestingAndroidShould {
         List<String> options = new ArrayList<>();
         options.add("option1");
         options.add("option2");
-        Experiment experiment = new Experiment("experiment", options);
+        Experiment experiment = new Experiment(EXPERIMENT_NAME, options);
 
         List<Experiment> experiments = Collections.singletonList(experiment);
 
