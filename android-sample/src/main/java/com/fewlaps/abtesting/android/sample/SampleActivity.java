@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import com.fewlaps.abtesting.R;
-import com.fewlaps.abtesting.android.core.ABBTestingAndroid;
+import com.fewlaps.abtesting.android.core.ABTestingAndroid;
 
 public class SampleActivity extends AppCompatActivity {
 
@@ -15,7 +15,7 @@ public class SampleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         TextView optionTextView = (TextView) findViewById(R.id.option);
-        String randomOption = ABBTestingAndroid.getCurrentOptionFor("Sample experiment");
+        String randomOption = ABTestingAndroid.getCurrentOptionFor("Sample experiment");
         optionTextView.setText(randomOption);
     }
 }
