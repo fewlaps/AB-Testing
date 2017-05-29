@@ -18,4 +18,10 @@ class ABTesting(val experiments: List<Experiment>, val repository: ABTestingRepo
         repository.saveOption(experimentName, option)
         return option
     }
+
+    fun getCurrentOptions(): List<CurrentOption> {
+        return experiments.map {
+            experiment ->  CurrentOption(experiment.name, getCurrentOptionFor(experiment.name))
+        }
+    }
 }

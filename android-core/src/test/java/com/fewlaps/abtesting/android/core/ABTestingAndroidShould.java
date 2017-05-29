@@ -17,7 +17,7 @@ import static junit.framework.Assert.assertEquals;
 
 @RunWith(RobolectricTestRunner.class)
 @Config(constants = BuildConfig.class)
-public class AbTestingAndroidShould {
+public class ABTestingAndroidShould {
 
     private static final String EXPERIMENT_NAME = "experiment";
 
@@ -30,12 +30,12 @@ public class AbTestingAndroidShould {
 
         List<Experiment> experiments = Collections.singletonList(experiment);
 
-        AbTestingAndroid.init(RuntimeEnvironment.application, experiments);
+        ABTestingAndroid.init(RuntimeEnvironment.application, experiments);
 
-        String firstOption = AbTestingAndroid.getCurrentOptionFor(EXPERIMENT_NAME);
+        String firstOption = ABTestingAndroid.getCurrentOptionFor(EXPERIMENT_NAME);
         System.out.println("Old option: " + firstOption);
         for (int i = 0; i < 10; i++) {
-            String newOption = AbTestingAndroid.getCurrentOptionFor("experiment");
+            String newOption = ABTestingAndroid.getCurrentOptionFor("experiment");
             System.out.println("New option: " + newOption);
             assertEquals(firstOption, newOption);
         }

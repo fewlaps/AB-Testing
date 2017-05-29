@@ -10,13 +10,13 @@ import org.jetbrains.annotations.Nullable;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class AbTestingSharedPreferencesRepository implements ABTestingRepository {
+public class ABTestingSharedPreferencesRepository implements ABTestingRepository {
 
     private static final String PREF_FILE_NAME = "AbTestingByFewlaps";
 
     private final SharedPreferences sharedPreferences;
 
-    public AbTestingSharedPreferencesRepository(Context appContext) {
+    public ABTestingSharedPreferencesRepository(Context appContext) {
         sharedPreferences = appContext.getSharedPreferences(PREF_FILE_NAME, MODE_PRIVATE);
     }
 
