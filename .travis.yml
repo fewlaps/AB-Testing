@@ -1,8 +1,10 @@
 language: java
 language: android
+
 jdk:
   - oraclejdk7
   - oraclejdk8
+
 android:
   components:
     - tools
@@ -14,3 +16,6 @@ android:
     - 'android-sdk-preview-license-52d11cd2'
     - 'android-sdk-license-.+'
     - 'google-gdk-license-.+'
+
+script:
+  - ./gradlew check
