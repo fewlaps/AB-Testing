@@ -2,7 +2,7 @@ package com.fewlaps.abtesting.android.sample;
 
 import android.app.Application;
 
-import com.fewlaps.abtesting.android.core.AbTestingAndroid;
+import com.fewlaps.abtesting.android.core.ABBTestingAndroid;
 import com.fewlaps.abtesting.core.Experiment;
 
 import java.util.ArrayList;
@@ -21,6 +21,6 @@ public class SampleApplication extends Application {
         List<Experiment> experiments = new ArrayList<>();
         experiments.add(sampleExperiment);
 
-        AbTestingAndroid.init(this, experiments);
+        ABBTestingAndroid.init(this, experiments);
     }
 }
