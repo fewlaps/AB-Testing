@@ -16,4 +16,4 @@ android:
   - addon
 
 script:
-  - ./gradlew check
+  - ./gradlew :core:check
