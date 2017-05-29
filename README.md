@@ -23,7 +23,7 @@ object ABTestingWrapper {
         ABTestingAndroid.init(context, listOf(buyOrPriceAtPurchaseFunnel))
     }
 
-    fun showPriceAtBeProOnboarding(): Boolean {
+    fun showPriceAtPurchaseFunnel(): Boolean {
         return ABTestingAndroid.getCurrentOptionFor(EXPERIMENT_PRICE_AT_PURCHASE_FUNNEL) == OPTION_SHOW_PRICE
     }
 }
