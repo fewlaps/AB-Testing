@@ -32,9 +32,9 @@ object ABTestingWrapper {
 To track results, just call `ABTestingAndroid.getCurrentOptions()` to get all the experiments and the option set to that user. For example, if you track events using Fabric, you could write something like this:
 
 ```kotlin
-private void populateExperimentCustomAttributes(AnswersEvent event) {
-    for (CurrentOption currentOption : ABTestingAndroid.getCurrentOptions()) {
-        event.putCustomAttribute("Experiment " + currentOption.getExperiment(), currentOption.getOption());
+fun populateExperimentCustomAttributes(event: AnswersEvent<*>) {
+    for (currentOption in ABTestingAndroid.getCurrentOptions()) {
+        event.putCustomAttribute("Experiment ${currentOption.experiment}", currentOption.option)
     }
 }
 ```
