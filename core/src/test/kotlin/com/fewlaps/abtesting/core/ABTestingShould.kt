@@ -27,10 +27,19 @@ class ABTestingShould {
     }
 
     @Test
-    internal fun returnListOfExperiments() {
+    fun returnListOfExperiments() {
         val experiments: List<Experiment> = abTesting.experiments
 
         assertEquals(EXPERIMENT_NAME, experiments[0].name)
+    }
+
+    @Test
+    fun returnListOfExperimentsWithCurrentOptions() {
+        val currentOptions: List<CurrentOption> = abTesting.getCurrentOptions()
+        given(randomGenerator.getRandom(anyInt())).willReturn(0)
+
+        assertEquals(EXPERIMENT_NAME, currentOptions[0].experiment)
+        assertEquals(OPTION_YES, currentOptions[0].option)
     }
 
     @Test

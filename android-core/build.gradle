@@ -1,11 +1,13 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
 
 buildscript {
-    dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.2'
-    }
     repositories {
         jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.2'
+        classpath 'com.novoda:bintray-release:0.3.4'
     }
 }
 
@@ -45,4 +47,13 @@ dependencies {
 
     testCompile 'junit:junit:4.12'
     testCompile "org.robolectric:robolectric:3.3.2"
+}
+
+publish {
+    userOrg = 'fewlaps'
+    groupId = 'com.fewlaps.abtesting'
+    artifactId = 'abtesting-android'
+    publishVersion = '1.1.0'
+    desc = 'A simple ABTesting library for Android'
+    website = 'https://github.com/Fewlaps/ABTesting'
 }
