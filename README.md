@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Fewlaps/AB-Testing.svg?branch=master)](https://travis-ci.org/Fewlaps/AB-Testing)
+
 # A/B Testing
 The simpler A/B Testing library
 
