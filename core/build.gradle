@@ -29,6 +29,11 @@ dependencies {
     testCompile 'org.assertj:assertj-core:3.8.0'
 }
 
+compileJava {
+    sourceCompatibility = "1.6"
+    targetCompatibility = "1.6"
+}
+
 publish {
     userOrg = 'fewlaps'
     groupId = 'com.fewlaps.abtesting'

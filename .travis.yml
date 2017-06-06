@@ -1,16 +1,24 @@
-language: java
 language: android
-jdk:
-  - oraclejdk7
-  - oraclejdk8
+jdk: oraclejdk8
+
+before_cache:
+  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+
+cache:
+  directories:
+    - $HOME/.m2
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+
 android:
   components:
-    - tools
-    - build-tools-25.0.2
-    - android-25
-    - platform-tools
-    - extra-android-support
-  licenses:
-    - 'android-sdk-preview-license-52d11cd2'
-    - 'android-sdk-license-.+'
-    - 'google-gdk-license-.+'
+  - tools
+  - tools
+  - platform-tools
+  - build-tools-25.0.1
+  - android-25
+  - extra
+  - addon
+
+script:
+  - ./gradlew :core:check
