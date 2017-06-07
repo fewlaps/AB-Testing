@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/Fewlaps/AB-Testing.svg?branch=master)](https://travis-ci.org/Fewlaps/AB-Testing)
+[ ![Download](https://api.bintray.com/packages/fewlaps/maven/abtesting-android/images/download.svg) ](https://bintray.com/fewlaps/maven/abtesting-android/_latestVersion)
 
 # A/B Testing
 The simpler A/B Testing library
