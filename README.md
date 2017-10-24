@@ -2,7 +2,7 @@
 [ ![Download](https://api.bintray.com/packages/fewlaps/maven/abtesting-android/images/download.svg) ](https://bintray.com/fewlaps/maven/abtesting-android/_latestVersion)
 
 # A/B Testing
-The simpler A/B Testing library
+The simplest A/B Testing library
 
 Create an experiment, set some options for them, and test the user's behaviour asap!
 
