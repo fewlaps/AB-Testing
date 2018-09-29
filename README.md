@@ -7,8 +7,8 @@ The simplest A/B Testing library
 Create an experiment, set some options for them, and test the user's behaviour asap!
 
 This A/B Testing library just runs on the device. So:
-- The setup is simple: just use the library. No need to setup a companion server to run experiments
-- Marketing team can't change your lovely app on the fly. Zero bugs created by avoiding app testing
+- The setup is simple: just use the library. No need to setup a companion server to run experiments.
+- Marketing team can't change your lovely app on the fly. Zero bugs created by avoiding app testing.
 
 To run experiments, we suggest you to wrap the library with your business needs, and use that wrapper from your app. For example:
 
@@ -55,7 +55,7 @@ compile 'com.fewlaps.abtesting:abtesting-android:1.1.0'
 
 The MIT License (MIT)
 
-Copyright (c) 2017 Fewlaps
+Copyright (c) 2018 Fewlaps
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
