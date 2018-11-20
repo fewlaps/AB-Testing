@@ -2,21 +2,23 @@ apply plugin: 'com.android.application'
 
 buildscript {
     repositories {
+        mavenCentral()
         jcenter()
+        google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.2'
+        classpath 'com.android.tools.build:gradle:3.2.1'
     }
 }
 
 repositories {
     mavenCentral()
     jcenter()
+    google()
 }
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.1"
 
     defaultConfig {
         applicationId "com.example.abtestingsample"
@@ -33,18 +35,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
-    }
 }
 
 dependencies {
-    compile project(':android-core')
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:25.3.1'
+    api project(':android-core')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:25.3.1'
 
-    androidTestCompile('com.schibsted.spain:barista:1.1.0') {
+    androidTestImplementation('com.schibsted.spain:barista:1.1.0') {
         exclude group: 'com.android.support'
     }
 }

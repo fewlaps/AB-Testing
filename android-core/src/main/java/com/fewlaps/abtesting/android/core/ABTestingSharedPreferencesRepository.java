@@ -5,9 +5,6 @@ import android.content.SharedPreferences;
 
 import com.fewlaps.abtesting.core.ABTestingRepository;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
 import static android.content.Context.MODE_PRIVATE;
 
 public class ABTestingSharedPreferencesRepository implements ABTestingRepository {
@@ -20,14 +17,13 @@ public class ABTestingSharedPreferencesRepository implements ABTestingRepository
         sharedPreferences = appContext.getSharedPreferences(PREF_FILE_NAME, MODE_PRIVATE);
     }
 
-    @Nullable
     @Override
-    public String getOption(@NotNull String experiment) {
+    public String getOption(String experiment) {
         return sharedPreferences.getString(experiment, null);
     }
 
     @Override
-    public void saveOption(@NotNull String experiment, @NotNull String option) {
+    public void saveOption(String experiment, String option) {
         sharedPreferences.edit().putString(experiment, option).apply();
     }
 }
