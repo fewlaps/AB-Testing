@@ -13,8 +13,9 @@ class ABTesting(val experiments: List<Experiment>, val repository: ABTestingRepo
             return storedOption
         }
 
-        val randomValue = randomGenerator.getRandom(experiments.size + 1)
-        val option = getExperiment(experimentName).options[randomValue]
+        val experiment = getExperiment(experimentName)
+        val randomValue = randomGenerator.getRandom(experiment.options.size)
+        val option = experiment.options[randomValue]
         repository.saveOption(experimentName, option)
         return option
     }
