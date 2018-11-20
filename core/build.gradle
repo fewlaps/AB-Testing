@@ -38,7 +38,7 @@ publish {
     userOrg = 'fewlaps'
     groupId = 'com.fewlaps.abtesting'
     artifactId = 'abtesting-core'
-    publishVersion = '1.1.0'
+    publishVersion = '1.1.1'
     desc = 'A simple ABTesting library for Java'
     website = 'https://github.com/Fewlaps/ABTesting'
 }
