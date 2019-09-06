@@ -49,6 +49,7 @@ fun populateExperimentCustomAttributes(event: AnswersEvent<*>) {
 repositories { jcenter() }
 
 compile 'com.fewlaps.abtesting:abtesting-android:1.1.1'
+compile 'com.fewlaps.abtesting:abtesting-core:1.1.1'
 ```
 
 ## LICENSE ##
