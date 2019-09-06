@@ -48,8 +48,8 @@ fun populateExperimentCustomAttributes(event: AnswersEvent<*>) {
 ```groovy
 repositories { jcenter() }
 
-compile 'com.fewlaps.abtesting:abtesting-android:1.1.1'
-compile 'com.fewlaps.abtesting:abtesting-core:1.1.1'
+implementation 'com.fewlaps.abtesting:abtesting-android:1.1.1'
+implementation 'com.fewlaps.abtesting:abtesting-core:1.1.1'
 ```
 
 ## LICENSE ##
